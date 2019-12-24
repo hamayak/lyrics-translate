@@ -2,10 +2,10 @@
   <v-app>
     <v-app-bar
       app
-      color="primary"
+      color="grey darken-3"
       dark
     >
-      <div class="d-flex align-center">
+      <div class="grey darken-3 d-flex align-center">
         <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
