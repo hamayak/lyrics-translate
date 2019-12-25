@@ -1,11 +1,11 @@
 <template>
-  <v-app>
+  <v-app style="color: #424242">
     <v-app-bar
       app
       color="grey darken-3"
       dark
     >
-      <div class="grey darken-3 d-flex align-center">
+      <div class=" d-flex align-center">
         <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
@@ -39,18 +39,21 @@
 
     <v-content>
       <HelloWorld/>
+      <Footer/>
     </v-content>
   </v-app>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld';
+import Footer from './components/Footer';
 
 export default {
   name: 'App',
 
   components: {
     HelloWorld,
+    Footer
   },
 
   data: () => ({
@@ -58,3 +61,4 @@ export default {
   }),
 };
 </script>
+
