@@ -6,7 +6,7 @@
           <v-row >
             <v-col cols="12">
           <v-card-title>
-            <h1>Tun Im hayreni(English translation)</h1>
+            <h1 class="a">Tun Im hayreni(English translation)</h1>
             
           </v-card-title>
           <v-card-text>
@@ -30,11 +30,11 @@
               <v-col cols="12">
                 <v-row>
               <v-col cols="6" >
-                <v-card-title style="color:white;">About translator</v-card-title>
+                <v-card-title class="a">About translator</v-card-title>
                 <v-img width="200px" src="https://lyricstranslate.com/files/styles/avatar/public/avatar-default-u.png?itok=3fdQPvOS"></v-img>
               </v-col>
                 </v-row>
-                <v-row>
+                <v-row class="abouttranslator">
                   <v-col cols="6">
                     <v-card-text>
                     <ul>
@@ -56,7 +56,7 @@
           <v-row justify="end">
             <v-col cols="6">
               <v-card-text>
-                <p style="color: #18ffff;">English translation</p>
+                <div style="color: #18ffff;">English translation</div>
                 <hr class="hr1">
                 <br>
                 <h2>My Fatherly Home</h2>
@@ -110,9 +110,9 @@ I’m begging, call me, let me come back home.
             </v-col>
             <v-col cols="6">
               <v-card-text>
-                <a  href="#">Armenian</a>
-                /
-                <a href="#">Romanization</a>
+                <a class="a"  href="#">Armenian</a>
+                <span style="color: white;"> / </span>
+                <a class="a" href="#">Romanization</a>
                 <hr class="hr1">
                 <br>
                 <h2>  Tun Im Hayreni</h2>
@@ -164,10 +164,70 @@ I’m begging, call me, let me come back home.
                 </v-row>
 
               </v-card-text>
+              
             </v-col>
           </v-row>
         </v-card>
-        
+        <p>Submitted by <a class="a" href="#">Matthew Bfenkamp</a> on Tuesday</p>
+        <v-card class="grey darken-3">
+          <v-row>
+            <v-col>
+              <v-row>
+                <v-col cols="6">
+                  <v-card-title style="color: #18ffff;" >
+                    <v-row justify="center" no-gutters>
+                     <v-col cols="10" class="text-center">
+                        More translations of "Tun Im Hayreni"
+                     </v-col>
+                     <v-col cols="8">
+                       <hr>
+                     </v-col>
+                    </v-row>
+                  </v-card-title>
+                  <v-card-text>
+                    <v-list dense class="grey darken-3 ">
+                      <v-list-item v-for="translation in translations" :key="translation.language">
+                        <v-row  justify="end">
+                          <v-col cols="4">
+                            <div class="hl">{{translation.language}}</div>
+                          </v-col>
+                          <v-col cols="6">
+                            <div class="hl">{{translation.author}}</div>
+                          </v-col>
+                        </v-row>
+                      </v-list-item>
+                    </v-list>
+                  </v-card-text>
+                </v-col>
+                <v-col>
+                 <v-card-title style="color: #18ffff;" >
+                   <v-row justify="center" no-gutters>
+                     <v-col cols="10" class="text-center">
+                        Arabo Ispiryan: Top 3
+                     </v-col>
+                     <v-col cols="8">
+                       <hr>
+                     </v-col>
+                    </v-row>
+                  </v-card-title>
+                  <v-card-text>
+                    <v-row justify="end">
+                      <v-col cols="8">
+                        <ol>
+                          <li>Tun Im Hayreni</li>
+                          <li>Aprum em Keznov(Ապրում եմ քռզնով)</li>
+                          <li>Piti Pashtpanem(Պիտի Պաշտպանեմ)</li>
+                        </ol>
+                      </v-col>
+                      
+                    </v-row>
+                  </v-card-text> 
+                </v-col>
+              </v-row>
+            </v-col>
+            
+          </v-row>
+        </v-card>
       </v-col>
     </v-row>
   </v-container>
@@ -179,7 +239,13 @@ export default {
   name: 'Song',
   props: {
     msg: String
-  }
+  },
+  data: () => ({
+    translations: [
+      { language: 'English', author: 'Matthew Bofenkamp' },
+      {  language: 'Spanish', author: 'Arthur' }
+    ]
+  })
 }
 </script>
 
@@ -191,10 +257,28 @@ export default {
   .hr1{
     width: 63%;
   }
-  p, h1, h2,li, v-card-title{
+  p, h1, h2,li,.hl, v-card-title{
     color: white;
   }
-  a{
+  .a,b{
     color: #18ffff;
   }
+  a{
+       text-decoration: none;
+  }
+  .abouttranslator{
+    margin-left: 200px;
+    margin-top: -235px;
+  }
+   ul {
+     list-style: none;
+}
+ul li::before {
+  content: "\2022";
+  color: #18ffff;
+  font-weight: bold;
+  display: inline-block; 
+  width: 1em;
+  margin-left: -1em;
+}
 </style>

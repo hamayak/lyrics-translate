@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Artists from '../views/Artists.vue'
+import Songs from '../views/Songs.vue'
+import Login from '../views/Login.vue'
+import Registration from '../views/Registration.vue'
 
 Vue.use(VueRouter)
 
@@ -17,7 +21,27 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+  },
+  {
+    path: '/artists',
+    name: 'artists',
+    component: Artists
+  },
+  {
+    path: '/songs',
+    name: 'songs',
+    component: Songs
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login
+  },
+  {
+    path: '/registration',
+    name: 'registration',
+    component: Registration
+  },
 ]
 
 const router = new VueRouter({
