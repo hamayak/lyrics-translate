@@ -1,8 +1,8 @@
 <template>
   <v-app >
     <v-app-bar app color="#242424" dark>
-      <v-app-bar-nav-icon class="hidden-md-and-up"></v-app-bar-nav-icon>
-      <v-toolbar-title @click="$router.push('/')">Lyrics App</v-toolbar-title>
+      <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="show = !show"></v-app-bar-nav-icon>
+      <v-toolbar-title class="hidden-sm-and-down" @click="$router.push('/')">Lyrics App</v-toolbar-title>
       <!-- <v-img src="./assets/flooop.png" /> -->
       <v-spacer></v-spacer>
       <v-text-field append-outer-icon="mdi-magnify"
@@ -11,9 +11,10 @@
             placeholder="Search"></v-text-field>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn text>Artist</v-btn>
-        <v-btn text>Songs</v-btn>
-        <v-btn text>Colections</v-btn>
+        <v-btn to='/artists' text>Artists</v-btn>
+        <v-btn to='/songs' text>Songs</v-btn>
+        <v-btn to='/login' text>Login</v-btn>
+        <v-btn to='/registration' text>Registration</v-btn>
         <v-menu
       origin="center center"
       transition="scale-transition"
@@ -40,15 +41,13 @@
     </v-app-bar>
 
 
-     <v-navigation-drawer permanent>
+     <v-navigation-drawer app v-model="show" class="hidden-md-and-up" disable-resize-watcher>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title class="title">
-            Application
+          <v-list-item-title  @click="$router.push('/');drawer=false;" class="title">
+            Lyrics App
           </v-list-item-title>
-          <v-list-item-subtitle>
-            subtext
-          </v-list-item-subtitle>
+          
         </v-list-item-content>
       </v-list-item>
 
@@ -58,9 +57,9 @@
         dense
         nav
       >
-        <v-list-item>
+        <v-list-item  @click="$router.push('/artists');drawer=false;">
           <v-list-item-icon>
-            <v-icon>mdi-account</v-icon>
+            <v-icon>mdi-microphone-variant</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
@@ -73,7 +72,7 @@
         dense
         nav
       >
-        <v-list-item>
+        <v-list-item @click="$router.push('/songs');drawer=false;">
           <v-list-item-icon>
             <v-icon>mdi-music-note</v-icon>
           </v-list-item-icon>
@@ -89,24 +88,45 @@
         dense
         nav
       >
-        <v-list-item>
+        <v-list-item @click="$router.push('/login');drawer=false;">
           <v-list-item-icon>
-            <v-icon> mdi-library-music</v-icon>
+            <v-icon> mdi-account</v-icon>
           </v-list-item-icon>
 
           <v-list-item-content>
-            <v-list-item-title>Colections</v-list-item-title>
+            <v-list-item-title>Login</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
+      
+
+      <v-list
+        dense
+        nav
+      >
+        <v-list-item @click="$router.push('/registration');drawer=false;">
+          <v-list-item-icon>
+            <v-icon> mdi-account-plus</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>Registration</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+      
     </v-navigation-drawer>
 
+    <v-content>
+      <router-view></router-view>
+    </v-content>
 
 </v-app>
 </template>
 <script>
   export default {
     data: () => ({
+      show: false,
       items: [
         { title: 'English' },
         { title: 'Russian' },
