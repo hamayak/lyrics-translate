@@ -1,31 +1,32 @@
 <template>
     <div id="menu">
-        <v-app-bar app color="#242424" dark>
+        <v-app-bar app color="indigo" dark>
         <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="show = !show"></v-app-bar-nav-icon>
         <v-toolbar-title class="hidden-sm-and-down" @click="$router.push('/')">Lyrics App</v-toolbar-title>
-        <!-- <v-img src="./assets/flooop.png" /> -->
         <v-spacer></v-spacer>
-        <v-text-field append-outer-icon="mdi-magnify"
-                v-model="searchText"
-                solo clearable hide-details single-line
-                placeholder="Search"></v-text-field>
-        <v-spacer></v-spacer>
+        <v-slide-x-reverse-transition>
+        <v-text-field 
+            v-if="vari"
+            placeholder="Placeholder"
+             solo clearable hide-details single-line
+            filled
+          ></v-text-field></v-slide-x-reverse-transition>
+      <v-btn icon @click="vari = !vari"><v-icon >mdi-magnify</v-icon></v-btn>
         <v-toolbar-items class="hidden-sm-and-down">
             <v-btn to='/artists' text>Artists</v-btn>
             <v-btn to='/songs' text>Songs</v-btn>
             <v-btn to='/login' text>Login</v-btn>
             <v-btn to='/registration' text>Registration</v-btn>
             <v-menu
-        origin="center center"
+        origin="top right"
         transition="scale-transition"
+        offset-y
         >
         <template v-slot:activator="{ on }">
-            <v-btn
-            color="#242424"
+            <v-btn 
             v-on="on"
-            >
-            Languages
-            </v-btn>
+            icon>
+            <v-icon class="fa fa-language"  ></v-icon></v-btn>
         </template>
 
         <v-list>
@@ -127,9 +128,9 @@
         { title: 'Russian' },
         { title: 'Armenian' },
         { title: 'French' },
-      ]
+      ],
+      vari: false
     }),
-    name: 'Song',
   props: {
     msg: String
   },

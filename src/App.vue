@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <Menu/>
-    <v-content>
+    <v-content class="grey darken-3">
       <router-view></router-view>
       <Footer/>
     </v-content>
