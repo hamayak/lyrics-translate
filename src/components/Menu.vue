@@ -41,7 +41,7 @@
         </v-app-bar>
 
 
-        <v-navigation-drawer app v-model="show" class="hidden-md-and-up" disable-resize-watcher>
+        <v-navigation-drawer dark app v-model="show" class="hidden-md-and-up" disable-resize-watcher>
         <v-list-item>
             <v-list-item-content>
             <v-list-item-title  @click="$router.push('/');drawer=false;" class="title">

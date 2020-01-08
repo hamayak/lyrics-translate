@@ -1,10 +1,12 @@
 <template>
   <v-app>
     <Menu/>
-    <v-content>
+    <v-content style="background-color:#757575">
       <router-view></router-view>
-      <Footer/>
     </v-content>
+      
+
+    <Footer/>
   </v-app>
 </template>
 
