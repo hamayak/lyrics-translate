@@ -3,8 +3,10 @@
     <Menu/>
     <v-content class="grey darken-3">
       <router-view></router-view>
-      <Footer/>
     </v-content>
+      
+
+    <Footer/>
   </v-app>
 </template>
 

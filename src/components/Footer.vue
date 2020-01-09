@@ -1,11 +1,12 @@
 <template>
-  <div>
+<div>
 <v-footer
     dark
     padless
-    fixed
+    app
+    absolute
   >
-    <v-card
+    <v-card style="width:100%"
       flat
       tile
       class="indigo lighten-1 white--text text-center"
@@ -23,10 +24,10 @@
 
       <v-card-text class="white--text pt-0">
           <div style="display: inline-block; margin-right:50px;"><a href="#">Artists</a></div>
-                        <div style="display: inline-block; margin-right:50px;"><a href="#">Songs</a></div>
-                        <div style="display: inline-block; margin-right:50px;"><a href="#">Translation</a></div>
-                        <div style="display: inline-block; margin-right:50px;"><a href="#">Sing In</a></div>
-                        <div style="display: inline-block; margin-right:50px;"><a href="#">Sign Up</a></div>
+                        <div style="display: inline-block; margin-right:50px;"><a style="color: white" href="#">Songs</a></div>
+                        <div style="display: inline-block; margin-right:50px;"><a style="color: white" href="#">Translation</a></div>
+                        <div style="display: inline-block; margin-right:50px;"><a style="color: white" href="#">Sing In</a></div>
+                        <div style="display: inline-block; margin-right:50px;"><a style="color: white" href="#">Sign Up</a></div>
        </v-card-text>
 
       <v-divider></v-divider>
@@ -36,8 +37,7 @@
       </v-card-text>
     </v-card>
   </v-footer>
-  </div>
-  
+</div>
 </template>
 
 <script>
