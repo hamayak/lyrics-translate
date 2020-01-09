@@ -23,7 +23,7 @@
               >
                 <td class="text-xs-left">{{ item.title }}</td>
                 <td class="text-xs-center">{{ item.artist }}</td>
-                <td class="text-xs-center">{{ item.language }}</td>
+                <td class="text-xs-center">{{ item.originalLanguage }}</td>
               </tr>
             </template>
           </v-data-table>
@@ -38,16 +38,29 @@ import axios from "axios";
 export default {
   name: "songs",
   data: () => ({
-    headers: null,
+    headers: [
+      {
+        text: 'Song Title',
+        align: 'left',
+        value: 'title'
+      },
+      {
+        text: 'Artist',
+        value: 'artist'
+      },
+      {
+        text: 'Language',
+        value: 'language'
+      }
+    ],
     songs: null,
     loading: true,
     error: null
   }),
   async created() {
     axios
-      .get("https://lyrics-site.herokuapp.com/getSongs")
+      .get("https://lyrics-translate.herokuapp.com/getSongs")
       .then(response => {
-        this.headers = response.data["headers"];
         this.songs = response.data["songs"];
         this.loading = false;
       })

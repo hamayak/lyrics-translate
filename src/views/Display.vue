@@ -52,8 +52,8 @@
               <v-card-text class="white--text">
                 <div style="color: #18ffff;">{{currentLanguage}} translation</div>
                 <hr class="hr1 mb-5">
-                <h2 class="mb-5">{{ songInfo[currentLanguage].title }}</h2>
-                <p @mouseover="hoverSelect(i)" @mouseleave="hoverDeselect(i)" :class="{'highlight': hover[i]}" v-for="(line, i) in songInfo[currentLanguage].lyrics" :key="i">
+                <h2 class="mb-5">{{ songInfo.title }}</h2>
+                <p @mouseover="hoverSelect(i)" @mouseleave="hoverDeselect(i)" :class="{'highlight': hover[i]}" v-for="(line, i) in songInfo.langObj[currentLanguage].lyrics" :key="i">
                   {{line}}
                 </p>
               </v-card-text>
@@ -63,15 +63,15 @@
                 <div class="a">{{ originalLanguage }}</div>
                 <hr class="hr1">
                 <br>
-                <h2 class="mb-5"> {{ songInfo[originalLanguage].title }} </h2>
-                <p @mouseover="hoverSelect(i)" @mouseleave="hoverDeselect(i)" :class="{'highlight': hover[i]}" v-for="(line, i) in songInfo[originalLanguage].lyrics" :key="i">
+                <h2 class="mb-5"> {{ songInfo.title }} </h2>
+                <p @mouseover="hoverSelect(i)" @mouseleave="hoverDeselect(i)" :class="{'highlight': hover[i]}" v-for="(line, i) in songInfo.langObj[originalLanguage].lyrics" :key="i">
                   {{ line }}
                 </p>
               </v-card-text>
             </v-col>
           </v-row>
         </v-card>
-        <p class="white--text">Submitted by <a class="a" href="#">{{ currentTranslator.firstName + ' ' + currentTranslator.lastName }}</a> on {{ songInfo[currentLanguage].date }}</p>
+        <p class="white--text">Submitted by <a class="a" href="#">{{ currentTranslator.firstName + ' ' + currentTranslator.lastName }}</a> on Friday</p>
       </v-col>
     </v-row>
   </v-container>
@@ -90,17 +90,25 @@ export default {
     loading: true
   }),
   async created() {
-    axios.get('https://lyrics-site.herokuapp.com/getSongInfo')
+    const params = {
+      id: this.$route.params.id
+    }
+    axios.get('https://lyrics-translate.herokuapp.com/getSongInfo', { params })
       .then((response) => {
         this.songInfo = response.data['songInfo']
+        console.log(this.songInfo)
         this.originalLanguage = this.songInfo.originalLanguage
         this.currentLanguage = this.songInfo.translations[0]
-        let translatorId = this.songInfo[this.currentLanguage].translatorId
-        return axios.get(`https://lyrics-site.herokuapp.com/getTranslatorInfo/${translatorId}`)
+        console.log(this.originalLanguage)
+        console.log(this.currentLanguage)
+        console.log(this.songInfo.langObj)
+        console.log(this.songInfo.langObj[this.originalLanguage])
+        console.log(this.songInfo.langObj[this.currentLanguage])
+        return axios.get('https://lyrics-translate.herokuapp.com/getTranslatorInfo/1')
       })
       .then((response) => {
         this.currentTranslator = response.data['currentTranslator']
-        for (var i = 0; i < this.songInfo[this.currentLanguage].lyrics.length; i++) {
+        for (var i = 0; i < this.songInfo.langObj[this.currentLanguage].lyrics.length; i++) {
           this.hover.push(false)
         }
         this.loading = false

@@ -224,7 +224,11 @@ export default {
       this.originalLyrics.splice(this.numLines, 1)
     },
     postSong: async function() {
-      let response = await axios.post('https://armenian-lyrics.herokuapp.com/postLyrics', { title: this.title, description: this.description, images: this.images })
+      let response = await axios.post('https://lyrics-translate.herokuapp.com/postLyrics',
+        { title: this.song, artist: this.artist, originalLanguage: this.originalLang,
+          translations: [this.currentLang], originalLyrics: this.originalLyrics,
+          currentLyrics: this.currentLyrics
+        })
       let id = response.data
       this.$router.push(`/display/${id}`)
     }

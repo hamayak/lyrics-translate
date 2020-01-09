@@ -68,7 +68,7 @@ export default {
   }),
   async created() {
     axios
-      .get("https://lyrics-site.herokuapp.com/getArtists")
+      .get("https://lyrics-translate.herokuapp.com/getArtists")
       .then(response => {
         this.artists = response.data["artists"];
         this.loading = false;
