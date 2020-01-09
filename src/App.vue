@@ -4,8 +4,6 @@
     <v-content class="grey darken-3">
       <router-view></router-view>
     </v-content>
-      
-
     <Footer/>
   </v-app>
 </template>

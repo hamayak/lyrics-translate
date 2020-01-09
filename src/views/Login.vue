@@ -14,7 +14,6 @@
                     <v-text-field
                     v-model="password"
                     :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                    :rules="passwordRules"
                     :type="show1 ? 'text' : 'password'"
                     name="input-10-1"
                     label="Password"
@@ -41,15 +40,8 @@ export default {
   data() {
     return {
       show1: false,
-      show2: true,
-      show3: false,
-      show4: false,
-      password: null,
-      passwordRules: [
-        value => !!value || "Required.",
-        v => (v && v.length >= 8) || "Min 8 characters",
-        v => /(?=.*\d)/.test(v) || "Must have one number"
-      ]
+      email: null,
+      password: null
     };
   }
 };

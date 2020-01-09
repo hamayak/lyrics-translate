@@ -8,19 +8,19 @@
             <v-form>
               <v-row>
                 <v-col cols="6">
-                  <v-text-field outlined v-model="Firstname" label="Name"></v-text-field>
+                  <v-text-field :rules="notBlankRule" outlined v-model="firstName" label="Name"></v-text-field>
                 </v-col>
                 <v-col cols="6">
-                  <v-text-field outlined v-model="Lastname" label="Lastname"></v-text-field>
+                  <v-text-field :rules="notBlankRule" outlined v-model="lastName" label="Lastname"></v-text-field>
                 </v-col>
                 <v-col cols="12">
-                  <v-text-field :rules="rules1" outlined v-model="email" label="E-mail"></v-text-field>
+                  <v-text-field :rules="emailRules" outlined v-model="email" label="E-mail"></v-text-field>
                   <v-text-field
                     outlined
                     v-model="confirmEmail"
                     label="Confirm E-mail"
                     error-count="3"
-                    :rules="emailRules"
+                    :rules="emailConfirmationRules"
                   ></v-text-field>
                   <v-text-field
                     v-model="password"
@@ -53,22 +53,33 @@
 export default {
   data() {
     return {
+      firstName: null,
+      lastName: null,
       show1: false,
-      show2: true,
-      show3: false,
-      show4: false,
+      confirmEmail: null,
       password: null,
-      passwordRules: [
-        value => !!value || "Required.",
-        v => (v && v.length >= 8) || "Min 8 characters",
-        v => /(?=.*\d)/.test(v) || "Must have one number"
-      ],
+      email: null,
       emailRules: [
-        () => this.email === this.emailToMatch || "E-mail must match",
-        v => !!v || "Confirmation E-mail is required"
+        v => !!v || 'Email is required',
+        v => /.+@.+\..+/.test(v) || 'Email must be valid'
       ],
-      rules: [value => !!value || "Required."]
-    };
+      passwordRules: [
+        v => !!v || 'Password is required',
+        v => (v && v.length >= 8) || 'Password must have 8 or more characters',
+        v => /(?=.*\d)/.test(v) || 'Password must contain at least 1 number'
+      ],
+      notBlankRule: [
+        v => !!v || 'This field is required'
+      ]
+    }
+  },
+  computed: {
+    emailConfirmationRules () {
+      return [
+        () => (this.email === this.confirmEmail) || 'E-mail must match',
+        v => !!v || 'Confirmation E-mail is required'
+      ]
+    }
   }
 };
 </script>

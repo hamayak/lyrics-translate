@@ -5,7 +5,7 @@
         <v-toolbar-title class="clickable hidden-sm-and-down" @click="$router.push('/')">Lyrics App</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-slide-x-reverse-transition>
-        <v-text-field 
+        <v-text-field
             v-if="vari"
             placeholder="Search"
              solo clearable hide-details single-line
@@ -15,6 +15,7 @@
         <v-toolbar-items class="hidden-sm-and-down">
             <v-btn to='/artists' text>Artists</v-btn>
             <v-btn to='/songs' text>Songs</v-btn>
+            <v-btn to='/submit' text>Submit</v-btn>
             <v-btn to='/login' text>Login</v-btn>
             <v-btn to='/registration' text>Registration</v-btn>
             <v-menu
@@ -23,7 +24,7 @@
         offset-y
         >
         <template v-slot:activator="{ on }">
-            <v-btn 
+            <v-btn
             v-on="on"
             icon>
             <v-icon class="fa fa-language"  ></v-icon></v-btn>
@@ -48,7 +49,7 @@
             <v-list-item-title  @click="$router.push('/');drawer=false;" class="title">
                 Lyrics App
             </v-list-item-title>
-            
+
             </v-list-item-content>
         </v-list-item>
 
@@ -84,6 +85,21 @@
             </v-list-item>
         </v-list>
 
+        <v-list
+            dense
+            nav
+        >
+            <v-list-item @click="$router.push('/submit');drawer=false;">
+            <v-list-item-icon>
+                <v-icon>mdi-plus</v-icon>
+            </v-list-item-icon>
+
+            <v-list-item-content>
+                <v-list-item-title>Submit</v-list-item-title>
+            </v-list-item-content>
+            </v-list-item>
+        </v-list>
+
 
         <v-list
             dense
@@ -99,7 +115,7 @@
             </v-list-item-content>
             </v-list-item>
         </v-list>
-        
+
 
         <v-list
             dense
@@ -115,7 +131,7 @@
             </v-list-item-content>
             </v-list-item>
         </v-list>
-        
+
         </v-navigation-drawer>
     </div>
 </template>
