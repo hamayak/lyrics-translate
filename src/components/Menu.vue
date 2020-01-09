@@ -2,12 +2,12 @@
     <div id="menu">
         <v-app-bar app color="indigo" dark>
         <v-app-bar-nav-icon class="hidden-md-and-up" @click.stop="show = !show"></v-app-bar-nav-icon>
-        <v-toolbar-title class="hidden-sm-and-down" @click="$router.push('/')">Lyrics App</v-toolbar-title>
+        <v-toolbar-title class="clickable hidden-sm-and-down" @click="$router.push('/')">Lyrics App</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-slide-x-reverse-transition>
         <v-text-field 
             v-if="vari"
-            placeholder="Placeholder"
+            placeholder="Search"
              solo clearable hide-details single-line
             filled
           ></v-text-field></v-slide-x-reverse-transition>
@@ -140,3 +140,7 @@
     ]
 }
 </script>
+
+<style scoped>
+.clickable { cursor: pointer; }
+</style>

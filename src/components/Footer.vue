@@ -9,25 +9,26 @@
     <v-card style="width:100%"
       flat
       tile
-      class="indigo lighten-1 white--text text-center"
+      class="indigo white--text"
     >
-      <v-card-text>
+      <v-card-text class="text-center">
         <v-btn
           v-for="icon in icons"
-          :key="icon"
+          :key="icon.link"
+          :href="icon.link"
+          target="_blank"
           class="mx-4 white--text"
           icon
         >
-          <v-icon size="24px">{{ icon }}</v-icon>
+          <v-icon size="24px">{{ icon.icon }}</v-icon>
         </v-btn>
       </v-card-text>
 
-      <v-card-text class="white--text pt-0">
-          <div style="display: inline-block; margin-right:50px;"><a href="#">Artists</a></div>
-                        <div style="display: inline-block; margin-right:50px;"><a style="color: white" href="#">Songs</a></div>
-                        <div style="display: inline-block; margin-right:50px;"><a style="color: white" href="#">Translation</a></div>
-                        <div style="display: inline-block; margin-right:50px;"><a style="color: white" href="#">Sing In</a></div>
-                        <div style="display: inline-block; margin-right:50px;"><a style="color: white" href="#">Sign Up</a></div>
+      <v-card-text class="white--text pt-0 text-center">
+          <v-btn dark text to='/artists'>Artists</v-btn>
+          <v-btn dark text to='/songs'>Songs</v-btn>
+          <v-btn dark text to='/login'>Login</v-btn>
+          <v-btn dark text to='/registration'>Registration</v-btn>
        </v-card-text>
 
       <v-divider></v-divider>
@@ -52,10 +53,10 @@ export default {
       {  language: 'Spanish', author: 'Arthur' }
     ],
     icons: [
-        'mdi-facebook-box',
-        'mdi-twitter-box',
-        'mdi-linkedin-box',
-        'mdi-instagram',
+        {icon: 'mdi-facebook-box', link: 'https://facebook.com'},
+        {icon: 'mdi-twitter-box', link: 'https://twitter.com'},
+        {icon: 'mdi-linkedin-box', link: 'https://linkedin.com'},
+        {icon: 'mdi-instagram', link: 'https://instagram.com'},
       ]
   })
 }

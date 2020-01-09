@@ -1,9 +1,9 @@
 <template>
-  <v-row justify="center">
+  <v-row align="center" justify="center" class="fill-height">
     <v-col cols="12" md="8">
       <v-container>
         <div class="text-center">
-          <v-card dark>
+          <v-card dark class="grey darken-1">
               <v-container class="pa-10">
               <v-card-title>
                 Login

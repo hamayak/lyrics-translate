@@ -5,6 +5,8 @@ import Artists from '../views/Artists.vue'
 import Songs from '../views/Songs.vue'
 import Login from '../views/Login.vue'
 import Registration from '../views/Registration.vue'
+import Display from '../views/Display.vue'
+import Submit from '../views/Submit.vue'
 
 Vue.use(VueRouter)
 
@@ -42,6 +44,16 @@ const routes = [
     name: 'registration',
     component: Registration
   },
+  {
+    path: '/display/:id',
+    name: 'display',
+    component: Display
+  },
+  {
+    path: '/submit',
+    name: 'submit',
+    component: Submit
+  }
 ]
 
 const router = new VueRouter({
