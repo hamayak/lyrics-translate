@@ -73,9 +73,9 @@ app.get('/getArtists', (req, res) => {
 app.get('/getTranslatorInfo/:id', (req, res) => {
   let response = {
     currentTranslator: {
-      firstName: 'Mathew',
-      lastName: 'Bfenkamp',
-      languages: ['English', 'Armenian', 'Norwegian']
+      firstName: 'Harutyun',
+      lastName: 'Terteryan',
+      languages: ['English', 'Armenian', 'Russian']
     }
   }
   res.status(200)
