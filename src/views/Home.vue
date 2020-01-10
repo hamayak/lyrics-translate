@@ -1,31 +1,43 @@
 <template>
- <div class="muzieknootjes">
-  <div class="noot-1">
-  &#9835; &#9833;
-</div>
-<div class="noot-2">
-  &#9833;
-</div>
-<div class="noot-3">
-  &#9839; &#9834;
-</div>
-<div class="noot-4">
-  &#9834;
-</div>
-</div>
+  <v-content>
+    <div class="muzieknootjes">
+      <div class="noot-1">&#9835; &#9833;</div>
+      <div class="noot-2">&#9833;</div>
+      <div class="noot-3">&#9839; &#9834;</div>
+      <div class="noot-4">&#9834;</div>
+    </div>
+    <v-row justify="center" class="text-center">
+      <v-col cols="11" md="7">
+        <h1 style = "color:white" :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-2': $vuetify.breakpoint. mdAndUp}"  >Welcome To Lyrics App</h1>
+      </v-col>
+      <v-col cols="11">
+         <v-parallax
+            src="img/2.jpg"
+            height="350"
+            class="rounded-img"
+          ></v-parallax>
+      </v-col>
+      <v-col cols="11" md="7">
+        <h1 style = "color:white" :class="{'subheading': $vuetify.breakpoint. smAndDown, 'display-1': $vuetify.breakpoint. mdAndUp}" >Search for your favorite song:</h1>
+      </v-col>
+      <v-col cols="11" md="7">
+        <v-text-field dark outlined label="Search"></v-text-field>
+      </v-col>
+    </v-row>
+  </v-content>
+  
 </template>
-
+ 
 <script>
 // @ is an alias to /src
 
 export default {
-  name: 'home',
-  
-}
+  name: "home"
+};
 </script>
 
 <style>
-  template {
+template {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,14 +47,17 @@ export default {
 }
 
 .muzieknootjes {
-  
   display: block;
   margin: auto;
   position: relative;
   width: 100%;
   min-width: 300px;
-  height: 200px;
+  height: 120px;
   border: 0px solid #000;
+}
+
+.rounded-img{
+    border-radius:50px;
 }
 
 .noot-1,
@@ -98,5 +113,4 @@ export default {
     opacity: 0;
   }
 }
-
 </style>

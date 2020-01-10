@@ -7,7 +7,7 @@
         <v-slide-x-reverse-transition>
         <v-text-field 
             v-if="vari"
-            placeholder="Placeholder"
+            placeholder="Search"
              solo clearable hide-details single-line
             filled
           ></v-text-field></v-slide-x-reverse-transition>
